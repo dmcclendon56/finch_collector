@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="../static/styles/main.css">
+        <script src="../static/scripts/app.js" defer></script>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Doggos{% block title %}{% endblock %}</title>
+    </head>
+    <body>
+        <nav>Dogs</nav>
+        <h1 class="content">
+            {% extends 'base.html' %}
+            {% block content %}
+            <h1>Doggos Home</h1>
+            {% endblock %}
+        </h1>
+        <h3 class="doggies">{% block nonsense %} {% endblock %}</h3>
+        <p>info info info</p>
+    </body>
+    </html>
