@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from django.views import View
-# from django.views.generic.edit import CreateView
-# from django.views.generic import DetailView
+from .models import dogs
 from django.views.generic.base import TemplateView
 
 # Create your views here.
@@ -13,3 +12,10 @@ class About(TemplateView):
 
 
 
+class DogList(TemplateView):
+    template_name = "dog_list.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["dogs"] = Dogs.objects.all() 
+        return context
