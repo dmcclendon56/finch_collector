@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views import View
-from .models import dogs
+from .models import dogs 
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.base import TemplateView
 from django.shortcuts import redirect
@@ -29,20 +29,20 @@ class DogCreate(CreateView):
     model = dogs
     fields = ['breed', 'img', 'description', 'AKC/CKC']
     template_name = "dog_create.html"
-    success_url = "/dogs/"   
+    success_url = "/doglist/"   
 
-    def get_success_url(self):
-        return reverse('dog_detail', kwargs={'pk': self.object.pk})     
+    # def get_success_url(self):
+    #     return reverse('dog_detail', kwargs={'pk': self.object.pk})     
 
 
 class DogCreate(View):
 
     def post(self, request, pk):
         breed = request.POST.get("breed")
-        description = request.POST.get("description")
+        type = request.POST.get("description")
         doggo = dogs.objects.get(pk=pk)
-        dogs.objects.create(breed=breed, description=description, doggo = doggo)
-        return redirect('dog_detail', pk=pk)
+        dogs.objects.create(breed=breed, type=type, doggo = doggo)
+        return redirect('dog_list', pk=pk)
 
 class DogDetail(DetailView):
     model = dogs
@@ -53,6 +53,10 @@ class DogDetail(DetailView):
         context["breeds"] = dogs.objects.all()
         return context 
 
+class DogDelete(DeleteView):
+    model = dogs
+    template_name = "dog_delete_confirm.html"
+    success_url = "/dog/"
 
 class DogUpdate(UpdateView):
     model = dogs
@@ -63,7 +67,7 @@ class DogUpdate(UpdateView):
     def get_success_url(self):
         return reverse('dog_detail', kwargs={'pk': self.object.pk})
 
-class dogDelete(DeleteView):
-    model = dogs
-    template_name = "dog_delete.html"
-    success_url = "/dog/"    
+# class DogDelete(DeleteView):
+#     model = dogs
+#     template_name = "dog_delete.html"
+#     success_url = "/dog/"    

@@ -10,10 +10,11 @@ class dogs (models.Model):
     type = models.TextField(max_length=500)
     AKC = models.BooleanField(default=False)
     CKC = models.BooleanField(default=False)
-    created_at = models.DateTimeField(auto_now_add=True)
     
     def __str__(self):
         return self.name
 
     class Meta:
         ordering = ['name']
+
+

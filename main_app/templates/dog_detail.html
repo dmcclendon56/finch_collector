@@ -15,8 +15,18 @@
     <h1 class="title">{{dog.name}}</h1>
 </div>
 <div class="detail__container">
+    <div class="detail__songs mb-5">
+
+        <h3 class="title is-3">{{dog.name}}</h3>
+        <div class="song">
+        <span>{{forloop.counter}}</span>
+        <span><b>{{breed.name}}</b></span>
+        <span>{{dog.get_length}}</span>
+        </div>
+
+
     <div class="buttons">
-        <a href="{% url 'dog_update' dogs.pk %} " class="button is-info"> Updates
+        <a href="{% url 'dog_update' dogs.pk %} " class="button is-info"> Update
             <span class="icon">
                 <i class="fas fa-edit"></i>
             </span>
@@ -29,7 +39,7 @@
     </div>
     <div class="detail__about">
         <h4 class="title is-4">About</h4>
-        <p>{{dog.bio}}</p>
+        <p>{{dog.type}}</p>
     </div>
 </div>
 
