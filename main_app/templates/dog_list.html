@@ -1,6 +1,10 @@
 {% extends 'base.html' %} {% block content %}
 
-<h1 class="title">Top Dog Breeds List</h1>
+{% comment %} for head title tags and helping us with SEO {% endcomment %}
+{% block title %}Dogs{% endblock  %}
+
+
+<h1 class="title">{{header}}</h1>
 
 <form class="mb-5" method="get">
   <div class="field has-addons">
@@ -13,15 +17,16 @@
     </div>
   </div>
   <!--  This anchor tag will redirect back to artist list without a query param -->
-  <a class="button is-dark" href="{% url 'artist_list' %}">Clear Search</a>
+  <a class="button is-dark" href="{% url 'dog_list' %}">Clear Search</a>
+  <a class="button is-dark" href="{% url 'dog_create' %}">Add Breeed</a>
 </form>
 <div class="gallery">
   {% for dog in dogs %}
-  <a href="">
+  <a href="{% url 'dog_detail' dog.pk %}">
     <div class="card">
       <div class="card-image">
         <figure class="image is-square">
-          <img src="{{artist.img}}" alt="{{dog.name}}" />
+          <img src="{{dog.img}}" alt="{{dog.name}}" />
         </figure>
       </div>
       <div class="card-header">
