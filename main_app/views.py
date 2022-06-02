@@ -27,7 +27,7 @@ class DogList(TemplateView):
 
 class DogCreate(CreateView):
     model = dogs
-    fields = ['breed', 'img', 'description', 'AKC/CKC']
+    fields = ['name', 'img', 'type', 'AKC', 'CKC']
     template_name = "dog_create.html"
     success_url = "/doglist/"   
 
@@ -35,14 +35,14 @@ class DogCreate(CreateView):
     #     return reverse('dog_detail', kwargs={'pk': self.object.pk})     
 
 
-class DogCreate(View):
+# class DogCreate(View):
 
-    def post(self, request, pk):
-        breed = request.POST.get("breed")
-        type = request.POST.get("description")
-        doggo = dogs.objects.get(pk=pk)
-        dogs.objects.create(breed=breed, type=type, doggo = doggo)
-        return redirect('dog_list', pk=pk)
+#     def post(self, request, pk):
+#         breed = request.POST.get("breed")
+#         type = request.POST.get("description")
+#         dog = dogs.objects.get(pk=pk)
+#         dogs.objects.create(breed=breed, type=type, dog = dog)
+#         return redirect('dog_list', pk=pk)
 
 class DogDetail(DetailView):
     model = dogs

@@ -1,7 +1,7 @@
 {% extends 'base.html' %} 
 {% block content %}
 <div class="detail__img">
-    <img src="{{dog.img}}" alt="{{dog.name}}" />
+    <img src="{{dogs.img}}" alt="{{dogs.name}}" />
 </div>
 <div class="detail__name">
     {% if dog.verified_dog %}
@@ -12,16 +12,16 @@
         <span>AKC/CKC</span>
     </div>
     {% endif %}
-    <h1 class="title">{{dog.name}}</h1>
+    <h1 class="title">{{dogs.name}}</h1>
 </div>
 <div class="detail__container">
     <div class="detail__songs mb-5">
 
-        <h3 class="title is-3">{{dog.name}}</h3>
+        <h3 class="title is-3">{{dogs.name}}</h3>
         <div class="song">
         <span>{{forloop.counter}}</span>
-        <span><b>{{breed.name}}</b></span>
-        <span>{{dog.get_length}}</span>
+        <span><b>{{dogs.name}}</b></span>
+        <span>{{dogs.get_length}}</span>
         </div>
 
 
@@ -39,7 +39,7 @@
     </div>
     <div class="detail__about">
         <h4 class="title is-4">About</h4>
-        <p>{{dog.type}}</p>
+        <p>{{dogs.type}}</p>
     </div>
 </div>
 
